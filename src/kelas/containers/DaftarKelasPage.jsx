@@ -3,78 +3,82 @@
 	https://amanah.cs.ui.ac.id/research/ifml-regen
 	version 3.5.10
 */
-import React, { useEffect, useState, useContext} from 'react'
-import { Button, Spinner } from "@/commons/components"
-import * as Layouts from '@/commons/layouts';
+import React, { useEffect, useState, useContext } from "react";
+import { Button, Spinner } from "@/commons/components";
+import * as Layouts from "@/commons/layouts";
 import { Link, useParams } from "react-router";
-import { HeaderContext } from "@/commons/components"
+import { HeaderContext } from "@/commons/components";
 import { useNavigate } from "react-router";
-import { useAuth } from '@/commons/auth';
+import { useAuth } from "@/commons/auth";
 import KelasTable from "../components/KelasTable";
 
-import getKelasDataList from '../services/getKelasDataList'
-const DaftarKelasPage = props => {
-const { checkPermission } = useAuth();
+import getKelasDataList from "../services/getKelasDataList";
+const DaftarKelasPage = (props) => {
+  const { checkPermission } = useAuth();
 
-	const [isLoading, setIsLoading] = useState({
-	daftarKelas: false,
+  const [isLoading, setIsLoading] = useState({
+    daftarKelas: false,
+  });
+  const { setTitle } = useContext(HeaderContext);
 
-	});
-	const { setTitle } = useContext(HeaderContext);
+  const [kelasDataList, setKelasDataList] = useState();
 
-const [kelasDataList, setKelasDataList] = useState()
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading((prev) => ({ ...prev, daftarKelas: true }));
+        const { data: kelasDataList } = await getKelasDataList();
+        setKelasDataList(kelasDataList.data);
+      } finally {
+        setIsLoading((prev) => ({ ...prev, daftarKelas: false }));
+      }
+    };
+    fetchData();
+  }, []);
 
-useEffect(() => {
-		const fetchData = async () => {
-			try {
-				setIsLoading(prev => ({...prev, daftarKelas: true}))
-				const { data: kelasDataList } = await getKelasDataList()
-				setKelasDataList(kelasDataList.data)
-			} finally {
-				setIsLoading(prev => ({...prev, daftarKelas: false}))
-			}
-		}
-		fetchData()	
-  	}, [])
-
-	
-	useEffect(() => {
-		setTitle("Daftar Kelas Page")
-	}, []);
-return (
-	<Layouts.ViewContainerLayout
-		buttons={
-			<>
-			<Layouts.ViewContainerButtonLayout>
-			  	{checkPermission("CreateKelas") &&  (
-			  	  <Link to={`/kelas/tambah
-			  	  `}>
-			  	  	<Button className="p-2" variant="primary">
-			  	  	  Tambah Kelas
-			  	  	</Button>
-			  	  </Link>
-			  	  
-			  	)}
-			  	
-			
-			  </Layouts.ViewContainerButtonLayout>
-			</>
-		}
-	>
-<Layouts.ListContainerTableLayout
-	title={"Daftar Kelas"}
-	singularName={"Kelas"}
-	items={[kelasDataList]}
-	isLoading={isLoading.daftarKelas}
->
-	<KelasTable
-		kelasDataList={kelasDataList}
-		
-	/>
-</Layouts.ListContainerTableLayout>
-
-	</Layouts.ViewContainerLayout>
-  )
-}
-export default DaftarKelasPage
-
+  useEffect(() => {
+    setTitle("Daftar Kelas Page");
+  }, []);
+  return (
+    <Layouts.ViewContainerLayout
+      buttons={
+        <>
+          <Layouts.ViewContainerButtonLayout>
+            {checkPermission("CreateKelas") && (
+              <Link
+                to={`/kelas/tambah
+			  	  `}
+              >
+                <Button className="p-2" variant="primary">
+                  Tambah Kelas
+                </Button>
+              </Link>
+            )}
+          </Layouts.ViewContainerButtonLayout>
+        </>
+      }
+    >
+      {isLoading.tableKelas ? (
+        <div className="flex justify-center items-center h-full">
+          <Spinner />
+        </div>
+      ) : (
+        <>
+          {kelasDataList?.map((mk, idx) => (
+            <div key={idx}>
+              <Layouts.ListContainerTableLayout
+                title={mk.nama}
+                singularName={"Kelas"}
+                items={[mk.kelas]}
+                isLoading={isLoading.daftarKelas}
+              >
+                <KelasTable kelasDataList={mk.kelas} />
+              </Layouts.ListContainerTableLayout>
+            </div>
+          ))}
+        </>
+      )}
+    </Layouts.ViewContainerLayout>
+  );
+};
+export default DaftarKelasPage;

@@ -4,7 +4,7 @@
 	version 3.5.10
 */
 import RequireAuth from '@/commons/auth/RequireAuth'
-
+import React from 'react';
 import DaftarKelasPage from './containers/DaftarKelasPage'
 import DetailKelasPage from './containers/DetailKelasPage'
 import UbahKelasPage from './containers/UbahKelasPage'
@@ -13,7 +13,7 @@ import TambahKelasPage from './containers/TambahKelasPage'
 const kelasRoutes = [
 { 
 	path: "/kelas",
-	element: <DaftarKelasPage />,
+	element: <RequireAuth permissionNeeded="ReadKelas" ><DaftarKelasPage/></RequireAuth>,
 }
 
 	
@@ -34,7 +34,7 @@ const kelasRoutes = [
 ,
 { 
 	path: "/kelas/:id",
-	element: <DetailKelasPage />,
+	element: <RequireAuth permissionNeeded="ReadKelas" ><DetailKelasPage/></RequireAuth>,
 }
 
 	
