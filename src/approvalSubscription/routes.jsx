@@ -4,7 +4,7 @@
 	version 3.5.10
 */
 import RequireAuth from '@/commons/auth/RequireAuth'
-
+import React from 'react';
 import ApprovalSubscriptionPage from './containers/ApprovalSubscriptionPage'
 
 const approvalSubscriptionRoutes = [

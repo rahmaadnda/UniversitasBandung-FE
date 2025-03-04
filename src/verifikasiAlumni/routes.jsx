@@ -3,8 +3,7 @@
 	https://amanah.cs.ui.ac.id/research/ifml-regen
 	version 3.5.10
 */
-import RequireAuth from '@/commons/auth/RequireAuth'
-
+import React from 'react';
 import CariAlumni from './containers/CariAlumni'
 import DetailAlumni from './containers/DetailAlumni'
 

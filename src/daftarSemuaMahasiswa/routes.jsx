@@ -4,6 +4,7 @@
 	version 3.5.10
 */
 import RequireAuth from '@/commons/auth/RequireAuth'
+import React from 'react';
 
 import DaftarSemuaMahasiswaPage from './containers/DaftarSemuaMahasiswaPage'
 import DetailMahasiswaPage from './containers/DetailMahasiswaPage'

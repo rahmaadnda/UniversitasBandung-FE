@@ -8,6 +8,7 @@ import { Button, Spinner } from "@/commons/components"
 import * as Layouts from '@/commons/layouts';
 import { Link, useParams } from "react-router";
 import { HeaderContext } from "@/commons/components"
+import { useAuth } from "@/commons/auth"; 
 
 import ProfileDetails from '../components/ProfileDetails'
 import getDataMahasiswa from '../services/getDataMahasiswa'
@@ -18,6 +19,7 @@ const [isLoading, setIsLoading] = useState({
 	});
 	const { setTitle } = useContext(HeaderContext);
 
+const { checkPermission } = useAuth(); 
 const [dataMahasiswa, setDataMahasiswa] = useState()
 const { id } = useParams()
 useEffect(() => {
