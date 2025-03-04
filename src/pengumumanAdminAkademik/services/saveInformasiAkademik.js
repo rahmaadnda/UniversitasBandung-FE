@@ -18,4 +18,5 @@ const saveInformasiAkademik = (data = {}) => {
 			
 		}
 	})} 
+
 export default saveInformasiAkademik
