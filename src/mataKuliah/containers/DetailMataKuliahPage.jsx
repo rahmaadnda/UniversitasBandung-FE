@@ -45,7 +45,7 @@ useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setIsLoading(prev => ({...prev, daftarCPMK: true}))
-				const { data: cPMKDataList } = await getCPMKDataList({ mataKuliahId })
+				const { data: cPMKDataList } = await getCPMKDataList({ mataKuliahId: id })
 				setCPMKDataList(cPMKDataList.data)
 			} finally {
 				setIsLoading(prev => ({...prev, daftarCPMK: false}))
