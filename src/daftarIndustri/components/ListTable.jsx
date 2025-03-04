@@ -1,10 +1,10 @@
 /*
 	Generated on 22/10/2024 by UI Generator PRICES-IDE
 	https://amanah.cs.ui.ac.id/research/ifml-regen
-	version 3.5.10
+	version 3.5.5
 */
 import React from 'react';
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { useAuth } from '@/commons/auth';
 import { Button, Modal } from '@/commons/components';
@@ -12,13 +12,13 @@ import { isMobile } from '@/commons/utils/responsive';
 
 import * as Layouts from "@/commons/layouts";
 
-const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
+const ListTable = ({ industriDataList, domainPerusahaanSelectionField
 
 	}) => {
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
-  const detail = async (industriItem) => {
-    isMobile() && navigate(`/daftarindustri/detail/${industriItem.id}`
+  const detail = async (listItem) => {
+    isMobile() && navigate(`/daftarindustri/detail/${listItem.id}`
     );
   };
   
@@ -27,7 +27,6 @@ const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
     <Layouts.ListComponentTableLayout
   	  items={[industriDataList, domainPerusahaanSelectionField]}
   	  detail={detail}
-  	  isSearchable
   	  filterFields={[
   	    {
   	      label: "Domain Bidang Perusahaan",
@@ -58,10 +57,9 @@ const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
   		}
   ,
   	  ]}
-        itemsEvents={(industriItem) => [
-          <Link to={`/daftarindustri/detail/${industriItem.id}`}>
-            <Button
-          	size="sm"
+        itemsEvents={(listItem) => [
+          <Link to={`/daftarindustri/detail/${listItem.id}`}>
+            <Button 
           	variant=
           		"primary"
             >
@@ -71,10 +69,10 @@ const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
           
           
         ]}
-    	  itemsModals={(industriItem) => [
+    	  itemsModals={(listItem) => [
         ]}
   	/>
   )
 };
 
-export default IndustriTable;
+export default ListTable;
