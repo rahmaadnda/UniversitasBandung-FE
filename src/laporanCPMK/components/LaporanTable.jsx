@@ -11,7 +11,7 @@ import { Button, Modal } from '@/commons/components';
 
 import * as Layouts from "@/commons/layouts";
 
-const LaporanTable = ({ kelasSelectionField, laporanCPMKDataList
+const LaporanTable = ({ kelasSelectionField, laporanCPMKDataList, cpmkList = []
 	}) => {
   const { checkPermission } = useAuth();
   
@@ -49,7 +49,14 @@ const LaporanTable = ({ kelasSelectionField, laporanCPMKDataList
             label: "Kelas",
             featureName: "kelasNama",
   		}
-  	  ]}
+  	  ].concat(cpmkList.map(cpmk => {
+		return {
+			id: cpmk.id,
+			condition: "IsHeading",
+			label: cpmk.kode,
+			featureName: cpmk.id
+		}
+	  }))}
   	/>
   )
 };
