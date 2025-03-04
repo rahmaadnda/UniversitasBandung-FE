@@ -14,7 +14,7 @@ const getKelasRencanaStudiDataList = (params = {}) => {
 		}
 	}).catch((error) => {
 		console.error(error);
-		notifyError(error);
+		// notifyError(error);
 	})
 } 
 

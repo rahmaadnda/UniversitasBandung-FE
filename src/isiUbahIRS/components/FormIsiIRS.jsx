@@ -17,65 +17,74 @@ import {
   RichTextField,
   VisualizationAttr,
   Spinner,
-  
 } from "@/commons/components";
 import {
   ALLOWED_PERMISSIONS,
   findAllowedPermission,
 } from "@/commons/constants/allowedPermission";
 import cleanFormData from "@/commons/utils/cleanFormData";
-import saveRencanaStudiMe from '../services/saveRencanaStudiMe'
+import saveRencanaStudiMe from "../services/saveRencanaStudiMe";
 
 import { notifyError } from "@/commons/utils/toaster";
 import * as Layouts from "@/commons/layouts";
+import KelasTable from "./KelasTable";
 
-const FormIsiIRS = ({ 
- }) => {
-  const { 
-    control, 
-    handleSubmit,
-  } = useForm()
-  
-  
-  
-  
-  
-  
-  
-  const navigate = useNavigate()
-  
+const FormIsiIRS = ({
+  formTitle,
+  kelasRencanaStudiDataList,
+  selectedClasses,
+  handleChange,
+  isLoading,
+}) => {
+  const { control, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
+
   const simpan = (data) => {
-    const cleanData = cleanFormData(data)
-    saveRencanaStudiMe({
-      ...cleanData,
-    })
-    .then(({ data: { data } }) => {
-    })
-    .catch((error) => {
-      console.error(error);
-      notifyError(error);
-    });
-  }
-  
-  
-  return (
-	  <Layouts.FormComponentLayout
-		  title="Isi IRS" 
-		  onSubmit={handleSubmit(simpan)}
-	
-	    vas={[
-		  ]}
-	
-		  formFields={[
-		  
-	
-		  ]}
-	
-		  itemsEvents={[
-				<Button key="Simpan" type="submit" variant="primary">Simpan</Button>
-	    ]}
-	  />
-  )
-}
+    // const cleanData = cleanFormData(data)
+    const req = {
+      kelasIds: selectedClasses.map((item) => item.id),
+    };
+    saveRencanaStudiMe(req)
+      .then(({ data: { data } }) => {
+        navigate("/irs/ringkasan");
+      })
+      .catch((error) => {
+        console.error(error);
+        notifyError(error);
+      });
+  };
 
-export default FormIsiIRS
+  return (
+    <Layouts.IRSFormComponentLayout
+      title={formTitle}
+      onSubmit={handleSubmit(simpan)}
+      vas={[]}
+      formFields={kelasRencanaStudiDataList?.map((mk, idx) => {
+        return (
+          <div key={idx} className="flex flex-col gap-4">
+            <Layouts.ListContainerTableLayout
+              title={mk.title}
+              singularName={"Kelas"}
+              items={[mk.kelas]}
+              isLoading={isLoading}
+            >
+              <KelasTable
+                handleChange={handleChange}
+                kelasRencanaStudiDataList={mk.kelas}
+                selectedClasses={selectedClasses}
+              />
+            </Layouts.ListContainerTableLayout>
+          </div>
+        );
+      })}
+      itemsEvents={[
+        <Button type="submit" variant="primary">
+          Simpan
+        </Button>,
+      ]}
+    />
+  );
+};
+
+export default FormIsiIRS;
