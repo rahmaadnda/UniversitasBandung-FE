@@ -3,15 +3,19 @@
 	https://amanah.cs.ui.ac.id/research/ifml-regen
 	version 3.5.10
 */
-import RequireAuth from '@/commons/auth/RequireAuth'
+import RequireAuth from "@/commons/auth/RequireAuth";
 
-import LaporanCPLPage from './containers/LaporanCPLPage'
+import LaporanCPLPage from "./containers/LaporanCPLPage";
 
 const laporanCPLRoutes = [
-	{ 
-		path: "/cpl/laporan",
-		element: <LaporanCPLPage />,
-	}
-]
+  {
+    path: "/cpl/laporan",
+    element: (
+      <RequireAuth permissionNeeded="ReadLaporanCPL">
+        <LaporanCPLPage />
+      </RequireAuth>
+    ),
+  },
+];
 
-export default laporanCPLRoutes
+export default laporanCPLRoutes;
