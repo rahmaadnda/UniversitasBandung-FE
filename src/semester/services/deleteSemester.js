@@ -1,22 +1,21 @@
-import axios from 'axios'
-import tokenManager from '@/commons/utils/token'
-import environment from '@/commons/utils/environment'
-import cleanFormData from '@/commons/utils/cleanFormData'
+import axios from "axios";
+import tokenManager from "@/commons/utils/token";
+import environment from "@/commons/utils/environment";
+import cleanFormData from "@/commons/utils/cleanFormData";
 
 const deleteSemester = (data = {}) => {
-	let body = data;
+  let body = data;
 
-	const { getToken } = tokenManager();
-	const token = getToken();
-	
-	return axios.delete(`${environment.rootApi}/call/semester/delete`, 
-	{
-		params: { token },
-		data: cleanFormData(body),
-		headers: {
-			'Authorization': token,
-			
-		}
-	})} 
+  const { getToken } = tokenManager();
+  const token = getToken();
 
-export default deleteSemester
+  return axios.delete(`${environment.rootApi}/call/semester/delete`, {
+    params: { token },
+    data: cleanFormData(body),
+    headers: {
+      Authorization: token,
+    },
+  });
+};
+
+export default deleteSemester;
