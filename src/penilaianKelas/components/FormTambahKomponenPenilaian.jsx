@@ -34,7 +34,7 @@ const FormTambahKomponenPenilaian = ({
   const { 
     control, 
     handleSubmit,
-  } = useForm({ defaultValues:  })
+  } = useForm()
   
   
   
@@ -43,14 +43,16 @@ const FormTambahKomponenPenilaian = ({
   
   
   const navigate = useNavigate()
+  const { id } = useParams();
   
   const tambah = (data) => {
     const cleanData = cleanFormData(data)
     saveKomponenPenilaian({
       ...cleanData,
+	  kelasId: id,
     })
     .then(({ data: { data } }) => {
-     navigate(`/penilaian-kelas/${.kelasId}`)
+     navigate(`/penilaian-kelas/${id}`)
     })
     .catch((error) => {
       console.error(error);
@@ -77,7 +79,7 @@ const FormTambahKomponenPenilaian = ({
 				  <InputField
 		            label="Nama Komponen"
 		            placeholder="Masukkan nama komponen"
-		            defaultValue={.nama}	            fieldState={fieldState}
+		            defaultValue={field.nama}	            fieldState={fieldState}
 					{...field}
 					isRequired={false}
 		          />
@@ -93,7 +95,7 @@ const FormTambahKomponenPenilaian = ({
 				  <InputField
 		            label="Bobot"
 		            placeholder="Masukkan bobot"
-		            defaultValue={.bobot}	            fieldState={fieldState}
+		            defaultValue={field.bobot}	            fieldState={fieldState}
 					{...field}
 					isRequired={false}
 		          />

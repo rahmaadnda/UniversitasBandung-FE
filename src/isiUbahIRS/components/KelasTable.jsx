@@ -12,13 +12,13 @@ import { isMobile } from '@/commons/utils/responsive';
 
 import * as Layouts from "@/commons/layouts";
 
-const KelasTable = ({ kelasRencanaStudiDataList
+const KelasTable = ({ kelasRencanaStudiDataList, handleChange, selectedClasses
 
 	}) => {
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (kelasItem) => {
-    isMobile() && navigate();
+    isMobile() && navigate(`/kelas/${kelasItem.id}`);
   };
   
   
@@ -26,51 +26,56 @@ const KelasTable = ({ kelasRencanaStudiDataList
     <Layouts.ListComponentTableLayout
   	  items={[kelasRencanaStudiDataList]}
   	  detail={detail}
+       selected={selectedClasses}
+       handleChange={handleChange}
   	  itemsAttrs={[
-  		{
+          {
+            id: "radio",
+            condition: "isHeading",
+            label: "",
+            featureName: "mataKuliahId",
+          },
+          {
             id: "namaKelas",
             condition: "isHeading",
             label: "Nama Kelas",
             featureName: "nama",
-  		}
-  ,
-  		{
-            id: "kapasitas",
-            condition: "isHeading",
-            label: "Kapasitas",
-            featureName: "kapasitas",
-  		}
-  ,
-  		{
-            id: "jadwal",
-            condition: "isHeading",
-            label: "Jadwal",
-            featureName: "jadwal",
-  		}
-  ,
-  		{
-            id: "ruangan",
-            condition: "isHeading",
-            label: "Ruangan",
-            featureName: "ruangan",
-  		}
-  ,
-  		{
-            id: "pengajar",
-            condition: "isHeading",
-            label: "Pengajar",
-            featureName: "dosen",
-  		}
-  ,
-  		{
+          },
+          {
             id: "periode",
             condition: "isHeading",
             label: "Periode",
             featureName: "semesterTanggal",
-  		}
-  	  ]}
+          },
+          {
+            id: "kapasitas",
+            condition: "isHeading",
+            label: "Kapasitas",
+            featureName: "kapasitas",
+          },
+          {
+            id: "jadwal",
+            condition: "isHeading",
+            label: "Jadwal",
+            featureName: "jadwal",
+          },
+          {
+            id: "ruangan",
+            condition: "isHeading",
+            label: "Ruangan",
+            featureName: "ruangan",
+          },
+          {
+            id: "pengajar",
+            condition: "isHeading",
+            label: "Pengajar",
+            featureName: "dosen",
+          },
+        ]}
         itemsEvents={(kelasItem) => [
-          
+          <Link to={`/kelas/${kelasItem.id}`}>
+          <Button variant="secondary">Detail</Button>
+        </Link>,         
           
         ]}
     	  itemsModals={(kelasItem) => [

@@ -11,7 +11,7 @@ import { Button, Modal } from '@/commons/components';
 
 import * as Layouts from "@/commons/layouts";
 
-const NilaiTable = ({ laporanNilaiCPLDataList
+const NilaiTable = ({ laporanNilaiCPLDataList, kurikulumSelectionField
 	}) => {
   const { checkPermission } = useAuth();
   

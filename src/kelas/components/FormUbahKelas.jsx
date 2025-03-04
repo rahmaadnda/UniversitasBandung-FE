@@ -53,7 +53,7 @@ const FormUbahKelas = ({
       ...cleanData,
     })
     .then(({ data: { data } }) => {
-     navigate(`/kelas/${kelasData.kelasId}`)
+     navigate(`/kelas/${kelasData.id}`)
     })
     .catch((error) => {
       console.error(error);

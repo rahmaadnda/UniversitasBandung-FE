@@ -45,6 +45,7 @@ const FormTambahPemetaanCapaian = ({
   
   
   const navigate = useNavigate()
+  const { id } = useParams();
   
   const simpan = (data) => {
     const cleanData = cleanFormData(data)

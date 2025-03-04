@@ -21,7 +21,7 @@ const DetailKelas = ({ data }) => {
     const ubahKelas = async () => {
       navigate(
         '/kelas/ubah?'
-        + `kelasId=${data.kelasId}`
+        + `kelasId=${data.id}`
         
       );
     };
@@ -30,7 +30,7 @@ const DetailKelas = ({ data }) => {
   
     const hapus = async () => {
       await deleteKelas({
-        id: data.kelasId,
+        id: data.id,
       });
       navigate('/kelas');
     };

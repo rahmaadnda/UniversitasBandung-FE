@@ -72,7 +72,7 @@ const KelasTable = ({ penilaianKelasDataList
   		}
   	  ]}
         itemsEvents={(kelasItem) => [
-          <Link to={`/penilaian-kelas/${id${kelasItem.kelasId}`}>
+          <Link to={`/penilaian-kelas/${kelasItem.kelasId}`}>
             <Button
           	size="sm"
           	variant=

@@ -45,7 +45,7 @@ const MahasiswaTable = ({ mahasiswaDataList
   		}
   	  ]}
         itemsEvents={(mahasiswaItem) => [
-          <Link to={`/penilaian-kelas/${id}/nilai/${mahasiswaId${mahasiswaItem.kelasId}`}>
+          <Link to={`/penilaian-kelas/${id}/nilai/${mahasiswaId}/${mahasiswaItem.kelasId}`}>
             <Button
           	size="sm"
           	variant=

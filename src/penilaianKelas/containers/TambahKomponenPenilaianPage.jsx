@@ -18,7 +18,7 @@ const [isLoading, setIsLoading] = useState({
 	const { setTitle } = useContext(HeaderContext);
 
 const [searchParams] = useSearchParams()
-const kelasId = searchParams.get('kelasId')
+const { id } = useParams();
 
 useEffect(() => {
     const fetch = async () => {
