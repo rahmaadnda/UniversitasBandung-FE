@@ -67,7 +67,10 @@ const FormPembayaranSemester = ({
 		  ]}
 	
 		  formFields={[
-		  
+      <span>
+        Klik tombol <b>Bayar</b> untuk menyelesaikan pembayaran
+        semester Anda.
+      </span>,
 	
 		  ]}
 	
