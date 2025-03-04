@@ -11,6 +11,7 @@ import { HeaderContext } from "@/commons/components"
 import { useSearchParams } from "react-router";
 import ModifiedFormFormProfileUpdateIndustri from '../components/ModifiedFormFormProfileUpdateIndustri'
 
+import getMakePublic from '../services/getMakePublic'
 import getDataIndustriUpdate from '../services/getDataIndustriUpdate'
 import getListDomainPerusahaan from '../services/getListDomainPerusahaan'
 const UpdateProfilePage = props => {
@@ -28,9 +29,11 @@ const [listDomainPerusahaan, setListDomainPerusahaan] = useState()
 useEffect(() => {
     const fetch = async () => {
 	  setIsLoading(prev => ({...prev, formProfileUpdateIndustri: true}))
-		const { data: dataIndustriUpdateResponse } = await getDataIndustriUpdate({ id  })
+	  	const { data: makePublicResponse } = await getMakePublic({ id  })
+	  	const { data: dataIndustriUpdateResponse } = await getDataIndustriUpdate({ id  })
 		const { data: listDomainPerusahaanResponse } = await getListDomainPerusahaan({ id  })
 
+		setMakePublic(makePublicResponse.data)
 	    setDataIndustriUpdate(dataIndustriUpdateResponse.data)
 	    setListDomainPerusahaan(listDomainPerusahaanResponse.data)
 
@@ -69,7 +72,8 @@ return (
 		(<>
 		 <ModifiedFormFormProfileUpdateIndustri
 			{...{ 
-				dataIndustriUpdate
+				makePublic
+, 				dataIndustriUpdate
 , 				listDomainPerusahaan
 				}}
 		 /> 
