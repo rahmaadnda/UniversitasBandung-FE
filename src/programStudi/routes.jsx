@@ -4,7 +4,7 @@
 	version 3.5.10
 */
 import RequireAuth from '@/commons/auth/RequireAuth'
-
+import React from 'react';
 import DaftarProgramStudiPage from './containers/DaftarProgramStudiPage'
 import DetailProgramStudiPage from './containers/DetailProgramStudiPage'
 import UbahProgramStudiPage from './containers/UbahProgramStudiPage'

@@ -45,8 +45,7 @@ return (
 		buttons={
 			<>
 			<Layouts.ViewContainerBackButtonLayout>
-			  	<Link to={`/programstudi/:id
-			  	`}>
+			  	<Link to={`/programstudi/${id}`}>
 			  		<Button className="p-4" variant="secondary">
 			  		  Kembali
 			  		</Button>
