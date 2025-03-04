@@ -13,9 +13,10 @@ import { useAuth } from "@/commons/auth";
 import LaporanTable from "../components/LaporanTable";
 import SelectionFieldReport from "@/commons/components/Form/SelectionFieldReport";
 import { BarChart } from "@/commons/Chart/BarChart";
-
-
+import getKurikulumDataList from "@/laporanCPL/services/getKurikulumDataList";
+import getAverageCPLDataList from "@/laporanCPL/services/getAverageCPLDataList";
 import getLaporanCPLDataList from "../services/getLaporanCPLDataList";
+
 const LaporanCPLPage = (props) => {
   const { checkPermission } = useAuth();
 
