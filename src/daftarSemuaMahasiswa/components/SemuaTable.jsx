@@ -27,6 +27,7 @@ const SemuaTable = ({ mahasiswaDataList, angkatanSelectionField
     <Layouts.ListComponentTableLayout
   	  items={[mahasiswaDataList, angkatanSelectionField]}
   	  detail={detail}
+  	  isSearchable
   	  filterFields={[
   	    {
   	      label: "Angkatan",
@@ -35,6 +36,20 @@ const SemuaTable = ({ mahasiswaDataList, angkatanSelectionField
   	    }
   	  ]}
   	  itemsAttrs={[
+  		{
+            id: "nama",
+            condition: "isHeading",
+            label: "Nama",
+            featureName: "nama",
+  		}
+  ,
+  		{
+            id: "nPM",
+            condition: "isHeading",
+            label: "NPM",
+            featureName: "npm",
+  		}
+  ,
   		{
             id: "tahunAngkatan",
             condition: "isHeading",
