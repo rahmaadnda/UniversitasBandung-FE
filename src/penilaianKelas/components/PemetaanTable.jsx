@@ -11,7 +11,7 @@ import { Button, Modal } from '@/commons/components';
 
 import * as Layouts from "@/commons/layouts";
 
-const PemetaanTable = ({ capaianDataList
+const PemetaanTable = ({ capaianDataList, capaianList
 	}) => {
   const { checkPermission } = useAuth();
   
@@ -26,7 +26,16 @@ const PemetaanTable = ({ capaianDataList
             label: "Nama",
             featureName: "nama",
   		}
-  	  ]}
+  	  ].concat(
+        capaianList.map((c) => {
+          return {
+            id: c.id,
+            condition: "IsHeading",
+            label: c.kode,
+            featureName: c.capaianId,
+          };
+        })
+      )}
   	/>
   )
 };

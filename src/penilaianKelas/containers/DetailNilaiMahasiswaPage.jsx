@@ -26,33 +26,33 @@ const { checkPermission } = useAuth();
 	const { setTitle } = useContext(HeaderContext);
 
 const [nilaiMahasiswaDataList, setNilaiMahasiswaDataList] = useState()
-
+const { id, mahasiswaId } = useParams();
 
 useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setIsLoading(prev => ({...prev, tableNilaiMahasiswa: true}))
-				const { data: nilaiMahasiswaDataList } = await getNilaiMahasiswaDataList({ kelasId })
+				const { data: nilaiMahasiswaDataList } = await getNilaiMahasiswaDataList({ kelasId: id, mahasiswaId })
 				setNilaiMahasiswaDataList(nilaiMahasiswaDataList.data)
 			} finally {
 				setIsLoading(prev => ({...prev, tableNilaiMahasiswa: false}))
 			}
 		}
-		fetchData()	
+		checkPermission("ReadKelasDosenMe") && fetchData()	
   	}, [])
 const [penilaianDataDetail, setPenilaianDataDetail] = useState()
-const { mahasiswaId } = useParams()
+
 useEffect(() => {
 	const fetchData = async () => {
 		try {
 			setIsLoading(prev => ({...prev, detailNilaiMahasiswa: true}))
-			const { data: penilaianDataDetail } = await getPenilaianDataDetail({ mahasiswaId })
+			const { data: penilaianDataDetail } = await getPenilaianDataDetail({ kelasId: id, mahasiswaId })
 			setPenilaianDataDetail(penilaianDataDetail.data)
 		} finally {
 			setIsLoading(prev => ({...prev, detailNilaiMahasiswa: false}))
 		}
 	}
-	 fetchData()
+	checkPermission("ReadKelasDosenMe") && fetchData()
 }, [])
 
 	

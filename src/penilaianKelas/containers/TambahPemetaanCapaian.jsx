@@ -21,6 +21,7 @@ const [isLoading, setIsLoading] = useState({
 	const { setTitle } = useContext(HeaderContext);
 
 const [searchParams] = useSearchParams()
+const { id } = useParams();
 const kelasId = searchParams.get('kelasId')
 const [komponenPenilaian, setKomponenPenilaian] = useState()
 const [capaian, setCapaian] = useState()
@@ -28,8 +29,8 @@ const [capaian, setCapaian] = useState()
 useEffect(() => {
     const fetch = async () => {
 	  setIsLoading(prev => ({...prev, tambahPemetaanCapaian: true}))
-		const { data: komponenPenilaianResponse } = await getKomponenPenilaian({ kelasId  })
-		const { data: capaianResponse } = await getCapaian({ kelasId  })
+		const { data: komponenPenilaianResponse } = await getKomponenPenilaian({ kelasId: id  })
+		const { data: capaianResponse } = await getCapaian({ kelasId: id  })
 
 	    setKomponenPenilaian(komponenPenilaianResponse.data)
 	    setCapaian(capaianResponse.data)

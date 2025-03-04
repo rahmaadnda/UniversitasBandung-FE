@@ -15,7 +15,7 @@ const KomponenTable = ({ komponenPenilaianDataList
 
 	}) => {
   const { checkPermission } = useAuth();
-  
+  const { id } = useParams();
   
   return (
     <Layouts.ListComponentTableLayout
@@ -37,7 +37,7 @@ const KomponenTable = ({ komponenPenilaianDataList
   	  ]}
         itemsEvents={(komponenItem) => [
           checkPermission("UpdateKomponenPenilaian") &&  (
-            <Link to={`/penilaian-kelas/${id}/komponen/${komponenId}/ubah${komponenItem.kelasId}`}>
+            <Link to={`/penilaian-kelas/${id}/komponen/${komponenItem.id}/ubah`}>
               <Button
             	size="sm"
             	variant=

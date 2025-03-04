@@ -44,14 +44,16 @@ const FormTambahNilai = ({
   
   
   const navigate = useNavigate()
+  const { id, mahasiswaId } = useParams();
   
   const simpan = (data) => {
     const cleanData = cleanFormData(data)
     savePenilaian({
+		mahasiswaId,
       ...cleanData,
     })
     .then(({ data: { data } }) => {
-     navigate(`/penilaian-kelas/${komponenPenilaianDataList.kelasIdkelasIdmahasiswaIdmahasiswaId}/nilai/:mahasiswaId`)
+     navigate(`/penilaian-kelas/:id/nilai/:mahasiswaId`)
     })
     .catch((error) => {
       console.error(error);
@@ -79,7 +81,8 @@ const FormTambahNilai = ({
 		            label="Nilai"
 		            placeholder="Masukkan nilai"
 					type="number"
-		            defaultValue={komponenPenilaianDataList.nilai}	            fieldState={fieldState}
+		            // defaultValue={komponenPenilaianDataList.nilai}	            
+					fieldState={fieldState}
 					{...field}
 					isRequired={false}
 		          />
@@ -99,7 +102,7 @@ const FormTambahNilai = ({
 	            options={komponenPenilaianDataList}
 	            placeholder="Masukkan komponen penilaian"
 					fieldState={fieldState}
-					defaultValue={komponenPenilaianDataList.id}
+					// defaultValue={komponenPenilaianDataList.id}
 	            {...field}
 					isRequired={false}
 	          />
