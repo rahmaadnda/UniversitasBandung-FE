@@ -64,7 +64,7 @@ return (
 		buttons={
 			<>
 			<Layouts.ViewContainerButtonLayout>
-			  	<Link to={`
+			  	<Link to={`/irs/isi
 			  	`}>
 			  		<Button className="p-2 w-full" variant="primary">
 			  		  Isi/Ubah IRS
@@ -91,11 +91,11 @@ return (
 <Layouts.ListContainerTableLayout
 	title={"Daftar Mata Kuliah Dipilih"}
 	singularName={"Mata"}
-	items={[mataKuliahDipilihDataList]}
-	isLoading={isLoading.daftarMataKuliahDipilih}
+	items={[mataKuliahDipilihDataList?.kelas]}
+	isLoading={isLoading.tableMataKuliahDipilih}
 >
 	<MataTable
-		mataKuliahDipilihDataList={mataKuliahDipilihDataList}
+		mataKuliahDipilihDataList={mataKuliahDipilihDataList?.kelas}
 		
 	/>
 </Layouts.ListContainerTableLayout>
