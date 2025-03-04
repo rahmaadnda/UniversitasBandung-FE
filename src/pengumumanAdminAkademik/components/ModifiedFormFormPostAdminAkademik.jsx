@@ -69,13 +69,42 @@ const ModifiedFormFormPostAdminAkademik = ({
 	
 		  formFields={[
 		  
-	
-		  ]}
-	
-		  itemsEvents={[
-				<Button key="Post" type="submit" variant="primary">Post</Button>
-	    ]}
-	  />
+          <Controller
+          name="judul"
+          control={control}
+          render={({ field, fieldState }) => (
+        <InputField
+              label="Judul"
+              placeholder="Masukkan judul"
+              fieldState={fieldState}
+        {...field}
+        isRequired={false}
+            />
+          )}
+        />
+  ,
+      
+      <Controller
+          name="deskripsi"
+          control={control}
+          render={({ field, fieldState }) => (
+        <RichTextField
+              label="Deskripsi"
+              placeholder="Masukkan deskripsi"
+              fieldState={fieldState}
+        {...field}
+        isRequired={false}
+            />
+          )}
+        />
+    ,
+
+    ]}
+
+    itemsEvents={[
+      <Button type="submit" variant="primary">Post</Button>
+    ]}
+  />
   )
 }
 
