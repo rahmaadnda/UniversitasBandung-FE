@@ -3,42 +3,46 @@
 	https://amanah.cs.ui.ac.id/research/ifml-regen
 	version 3.5.10
 */
-import RequireAuth from '@/commons/auth/RequireAuth'
+import RequireAuth from "@/commons/auth/RequireAuth";
 
-import DaftarKurikulumPage from './containers/DaftarKurikulumPage'
-import DetailKurikulumPage from './containers/DetailKurikulumPage'
-import UbahKurikulumPage from './containers/UbahKurikulumPage'
-import TambahKurikulumPage from './containers/TambahKurikulumPage'
+import DaftarKurikulumPage from "./containers/DaftarKurikulumPage";
+import DetailKurikulumPage from "./containers/DetailKurikulumPage";
+import UbahKurikulumPage from "./containers/UbahKurikulumPage";
+import TambahKurikulumPage from "./containers/TambahKurikulumPage";
 
 const kurikulumRoutes = [
-{ 
-	path: "/kurikulum",
-	element: <DaftarKurikulumPage />,
-}
+  {
+    path: "/kurikulum",
+    element: (
+      <RequireAuth permissionNeeded="ReadKurikulum">
+        <DaftarKurikulumPage />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/kurikulum/ubah",
+    element: (
+      <RequireAuth permissionNeeded="UpdateKurikulum">
+        <UbahKurikulumPage />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/kurikulum/tambah",
+    element: (
+      <RequireAuth permissionNeeded="CreateKurikulum">
+        <TambahKurikulumPage />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/kurikulum/:id",
+    element: (
+      <RequireAuth permissionNeeded="ReadKurikulum">
+        <DetailKurikulumPage />
+      </RequireAuth>
+    ),
+  },
+];
 
-	
-,
-{ 
-	path: "/kurikulum/ubah",
-	element: <RequireAuth permissionNeeded="UpdateKurikulum" ><UbahKurikulumPage/></RequireAuth>
-}
-
-	
-,
-{ 
-	path: "/kurikulum/tambah",
-	element: <RequireAuth permissionNeeded="CreateKurikulum" ><TambahKurikulumPage/></RequireAuth>
-}
-
-	
-,
-{ 
-	path: "/kurikulum/:id",
-	element: <DetailKurikulumPage />,
-}
-
-	
-
-]
-
-export default kurikulumRoutes
+export default kurikulumRoutes;
