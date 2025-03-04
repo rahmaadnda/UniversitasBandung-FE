@@ -13,19 +13,19 @@ import UbahCPLPage from './containers/UbahCPLPage'
 const cPLRoutes = [
 	{ 
 		path: "/cpl",
-		element: <DaftarCPLPage />,
+		element: <RequireAuth permissionNeeded="ReadCPL" ><DaftarCPLPage/></RequireAuth>,
 	},
 	{ 
 		path: "/cpl/:id",
-		element: <DetailCPLPage />,
+		element: <RequireAuth permissionNeeded="ReadCPL" ><DetailCPLPage/></RequireAuth>,
 	},
 	{ 
 		path: "/cpl/tambah",
-		element: <TambahCPLPage />,
+		element: <RequireAuth permissionNeeded="CreateCPL" ><TambahCPLPage/></RequireAuth>,
 	},
 	{ 
 		path: "/cpl/ubah",
-		element: <UbahCPLPage />,
+		element: <RequireAuth permissionNeeded="UpdateCPL" ><UbahCPLPage/></RequireAuth>,
 	}
 ]
 

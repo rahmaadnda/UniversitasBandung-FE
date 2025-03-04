@@ -45,7 +45,7 @@ useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setIsLoading(prev => ({...prev, daftarCPMK: true}))
-				const { data: bobot } = await getBobot()
+				const { data: bobot } = await getBobot({ parentCPLId: id })
 				setBobot(bobot.data)
 			} finally {
 				setIsLoading(prev => ({...prev, daftarCPMK: false}))
