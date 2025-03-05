@@ -44,12 +44,14 @@ export default menus;
 addMenu({
   route: "/profilealumni",
   label: "Profile Alumni",
+  permission: "UpdateAlumni",
   subMenus: [],
 });
 
 addMenu({
   route: "/buatakunalumni",
   label: "Buat Akun Alumni",
+  permission: "CreateAkunAlumni",
   subMenus: [],
 });
 
@@ -63,33 +65,42 @@ addMenu({
 addMenu({
   route: "#",
   label: "Pengumuman",
+  permission: ["ReadInformasiAkademik","ReadInformasiIndustri","ReadInformasiAlumni","administrator"],
   subMenus: [],
 });
 
 addSubMenu("Pengumuman", {
   route: "/pengumumanalumni",
   label: "Pengumuman Alumni",
+  permission: "ReadInformasiAlumni",
+
 });
 
 addSubMenu("Pengumuman", {
   route: "/pengumumanindustri",
   label: "Pengumuman Industri",
+  permission: "ReadInformasiIndustri",
+
 });
 
 addSubMenu("Pengumuman", {
   route: "/pengumumanakademik",
   label: "Pengumuman Admin Akademik",
+  permission: "ReadInformasiAkademik",
+
 });
 
 addMenu({
   route: "/profilemahasiswa",
   label: "Profile Mahasiswa",
+  permission: "UpdateMahasiswa",
   subMenus: [],
 });
 
 addMenu({
   route: "/approvalsubscription",
   label: "Approval Subscription",
+  permission: "SubscriptionApproveIndustri",
   subMenus: [],
 });
 
@@ -122,32 +133,43 @@ addMenu({
 addMenu({
   route: "#",
   label: "Daftar Pengguna",
+  permission: ["ReadIndustri","ReadMahasiswa","ReadAlumni","ReadAlumniPublic","ReadMahasiswaPublic","administrator"],
   subMenus: [],
 });
 
 addSubMenu("Daftar Pengguna", {
   route: "/daftarsemuaalumni",
   label: "Daftar Semua Alumni",
+  permission: "ReadAlumni",
+
 });
 
 addSubMenu("Daftar Pengguna", {
   route: "/daftarsemuamahasiswa",
   label: "Daftar Semua Mahasiswa",
+  permission: "ReadMahasiswa",
+
 });
 
 addSubMenu("Daftar Pengguna", {
   route: "/daftaralumni",
   label: "Daftar Alumni",
+  permission: "ReadAlumniPublic",
+
 });
 
 addSubMenu("Daftar Pengguna", {
   route: "/daftarmahasiswa",
   label: "Daftar Mahasiswa",
+  permission: "ReadMahasiswaPublic",
+
 });
 
 addSubMenu("Daftar Pengguna", {
   route: "/daftarindustri",
   label: "Daftar Industri",
+  permission: "ReadIndustri",
+
 });
 
 addMenu({
@@ -192,23 +214,28 @@ addSubMenu("IRS", {
 addMenu({
   route: "/pengajuansubscription",
   label: "Pengajuan Subscription",
+  permission: "ReadSubscriptionPlan",
   subMenus: [],
 });
 
 addMenu({
   route: "#",
   label: "Verifikasi Identitas",
+  permission: ["VerifyAlumni","VerifyMahasiswa"],
   subMenus: [],
 });
 
 addSubMenu("Verifikasi Identitas", {
   route: "/verifikasialumni",
   label: "Verifikasi Alumni",
+  permission: ["VerifyAlumni","VerifyMahasiswa"],
+
 });
 
 addSubMenu("Verifikasi Identitas", {
   route: "/verifikasimahasiswa",
   label: "Verifikasi Mahasiswa",
+  permission: ["VerifyAlumni","VerifyMahasiswa"],
 });
 
 addMenu({
@@ -220,6 +247,7 @@ addMenu({
 addMenu({
   route: "/updatelulusan",
   label: "Update Lulusan",
+  permission: "GraduateMahasiswa",
   subMenus: [],
 });
 
@@ -284,5 +312,6 @@ addMenu({
 addMenu({
   route: "/profileindustri",
   label: "Profile Industri",
+  permission: "UpdateIndustri",
   subMenus: [],
 });
