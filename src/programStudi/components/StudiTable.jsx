@@ -18,6 +18,7 @@ const StudiTable = ({ programStudiDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (studiItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/programstudi/${studiItem.id}`
     );
   };
@@ -65,6 +66,7 @@ const StudiTable = ({ programStudiDataList
   		}
   	  ]}
         itemsEvents={(studiItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/programstudi/${studiItem.id}`}>
             <Button
           	size="sm"

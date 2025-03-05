@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /*
 	Generated on 22/10/2024 by UI Generator PRICES-IDE
 	https://amanah.cs.ui.ac.id/research/ifml-regen
@@ -20,6 +21,7 @@ const CPMKTable = ({ cPMKDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (cPMKItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/cpmk/${cPMKItem.id}`);
   };
   

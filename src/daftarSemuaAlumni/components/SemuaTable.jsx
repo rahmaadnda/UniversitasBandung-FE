@@ -18,6 +18,7 @@ const SemuaTable = ({ tahunLulusSelectionField, alumniDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (semuaItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/daftarsemuaalumni/detail/${semuaItem.id}`
     );
   };
@@ -59,6 +60,7 @@ const SemuaTable = ({ tahunLulusSelectionField, alumniDataList
   		}
   	  ]}
         itemsEvents={(semuaItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/daftarsemuaalumni/detail/${semuaItem.id}`}>
             <Button
           	size="sm"

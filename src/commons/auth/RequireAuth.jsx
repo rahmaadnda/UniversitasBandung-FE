@@ -13,6 +13,8 @@ function RequireAuth({ permissionNeeded, children }) {
 
   // user doesn't have any permission
   if (isAuthenticated && !permissions) {
+    console.log("there")
+
     return <Navigate to="/unauthorized" />;
   }
 
@@ -21,6 +23,8 @@ function RequireAuth({ permissionNeeded, children }) {
     !permissions.includes(permissionNeeded) &&
     !permissions.includes("administrator")
   ) {
+    console.log("here")
+    console.log(permissions.includes(permissionNeeded))
     return <Navigate to="/unauthorized" />;
   }
 

@@ -18,6 +18,7 @@ const AlumniTable = ({ alumniDataList, tahunLulusSelectionField
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (alumniItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/daftaralumni/detail/${alumniItem.id}`
     );
   };
@@ -59,6 +60,7 @@ const AlumniTable = ({ alumniDataList, tahunLulusSelectionField
   ,
   	  ]}
         itemsEvents={(alumniItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/daftaralumni/detail/${alumniItem.id}`}>
             <Button
           	size="sm"

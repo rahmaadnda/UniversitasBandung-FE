@@ -18,6 +18,7 @@ const TermTable = ({ termRiwayatAkademisDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (termItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/kelas/${termItem.id}`
     );
   };

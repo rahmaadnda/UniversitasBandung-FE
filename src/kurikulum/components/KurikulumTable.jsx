@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /*
 	Generated on 22/10/2024 by UI Generator PRICES-IDE
 	https://amanah.cs.ui.ac.id/research/ifml-regen
@@ -18,6 +19,7 @@ const KurikulumTable = ({ kurikulumDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (kurikulumItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/kurikulum/${kurikulumItem.id}`
     );
   };

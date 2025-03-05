@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import { INPUT_CLASSNAMES } from "./variants";
 import useAppearance from "@/commons/appearance/useAppearance";
 
-const SelectionField = forwardRef((props, ref) => {
+const SelectionFieldReport = forwardRef((props, ref) => {
   const {
     label,
     variant,
@@ -12,10 +12,16 @@ const SelectionField = forwardRef((props, ref) => {
     className,
     fieldState,
     kit,
+    selectedValue,
+    setSelectedValue,
   } = props;
   const interfaceKit = useAppearance();
   const inputStyle = (kit ?? interfaceKit).input;
   const inputVariant = INPUT_CLASSNAMES[inputStyle];
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   return (
     <div className="form-control" {...variant}>
@@ -30,19 +36,22 @@ const SelectionField = forwardRef((props, ref) => {
         </label>
       )}
       <select
-        className={`select ${inputVariant} w-full whitespace-normal ${fieldState?.error &&
-          "select-error"} ${className}`}
+        className={`select ${inputVariant} w-full whitespace-normal ${
+          fieldState?.error && "select-error"
+        } ${className}`}
         ref={ref}
+        onChange={handleChange}
         {...props}
         {...variant}
       >
         <option disabled selected hidden>
-          {placeholder}
+          {selectedValue ?? placeholder}
         </option>
         {options &&
           options.map((option) => (
-            // eslint-disable-next-line react/jsx-key
-            <option value={option.id}>{option.name}</option>
+            <option key={option.id} value={option.id}>
+              {option.name}
+            </option>
           ))}
       </select>
       {fieldState?.error && (
@@ -54,4 +63,4 @@ const SelectionField = forwardRef((props, ref) => {
   );
 });
 
-export default SelectionField;
+export default SelectionFieldReport;

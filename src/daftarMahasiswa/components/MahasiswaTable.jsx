@@ -18,6 +18,7 @@ const MahasiswaTable = ({ mahasiswaDataList, angkatanSelectionField
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (mahasiswaItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/daftarmahasiswa/detail/${mahasiswaItem.id}`
     );
   };
@@ -66,6 +67,7 @@ const MahasiswaTable = ({ mahasiswaDataList, angkatanSelectionField
   ,
   	  ]}
         itemsEvents={(mahasiswaItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/daftarmahasiswa/detail/${mahasiswaItem.id}`}>
             <Button
           	size="sm"

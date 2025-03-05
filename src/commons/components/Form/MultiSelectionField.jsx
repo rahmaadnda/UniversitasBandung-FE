@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef, useEffect, useState } from "react";
 import CheckBoxField from "./CheckBoxField";
 import { capitalize } from "@/commons/utils/capitalize";
@@ -20,7 +21,7 @@ const MultiSelectionField = forwardRef((props, ref) => {
       tempDefaultValue = defaultValue.split(",");
       let tempAllChecked = options.map((item) => {
         for (let i = 0; i < tempDefaultValue.length; i++) {
-          if (item.id === parseInt(tempDefaultValue[i])) {
+          if (item.id === tempDefaultValue[i]) {
             return true;
           }
         }
@@ -51,7 +52,7 @@ const MultiSelectionField = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="form-control break-inside-avoid" {...variant}>
+    <div className="form-control" {...variant}>
       {label && <label className="label font-bold uppercase">{label}</label>}
       {options &&
         value !== undefined &&

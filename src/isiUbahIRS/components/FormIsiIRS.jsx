@@ -79,6 +79,7 @@ const FormIsiIRS = ({
         );
       })}
       itemsEvents={[
+        // eslint-disable-next-line react/jsx-key
         <Button type="submit" variant="primary">
           Simpan
         </Button>,

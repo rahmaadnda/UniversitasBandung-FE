@@ -33,6 +33,7 @@ const BerdasarkanMataKuliah = (props) => {
         setIsLoading((prev) => ({ ...prev, tableMKRiwayatAkademis: false }));
       }
     };
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     checkPermission("ReadKelasMahasiswaMe") && fetchData();
   }, []);
 

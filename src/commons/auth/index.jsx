@@ -49,10 +49,20 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(isKeepLogin);
 
   const checkPermission = (permissionNeeded) => {
+    // console.log(permissions)
+    console.log("permissions")
+    console.log(permissions)
     if (permissions && isAuthenticated) {
       if (permissionNeeded instanceof Array) {
+        console.log("tes")
+        console.log(permissions.some((r) => permissionNeeded.indexOf(r) >= 0))
         return permissions.some((r) => permissionNeeded.indexOf(r) >= 0);
-      } else if (permissions.includes(permissionNeeded) || permissions.includes("administrator")) {
+      } else if (        
+        permissions.includes(permissionNeeded) ||
+        permissions.includes("administrator")
+      ) {
+        console.log("tes2")
+        console.log(permissions.includes(permissionNeeded))
         return true;
       }
     }
@@ -151,7 +161,9 @@ export const AuthProvider = ({ children }) => {
         var allowedPermissions = data["data"]["data"]
           ? data["data"]["data"]["allowedPermissions"]
           : [];
-        var tokenKeepLogin = data["data"]["data"] ? data["data"]["data"]["token_keep_login"] : [];
+        var tokenKeepLogin = data["data"]["data"]
+          ? data["data"]["data"]["token_keep_login"]
+          : [];
         if (status != 200) {
           return;
         }
@@ -180,9 +192,19 @@ export const AuthProvider = ({ children }) => {
     });
     var status = data["status"];
     var tokenId = data["data"]["data"] ? data["data"]["data"]["token"] : [];
-    var allowedPermissions = data["data"]["data"] ? data["data"]["data"]["allowedPermissions"] : [];
-    var tokenKeepLogin = data["data"]["data"] ? data["data"]["data"]["token_keep_login"] : [];
-    if (tokenId == [] || !tokenId || tokenKeepLogin == [] || !tokenKeepLogin || status != 200) {
+    var allowedPermissions = data["data"]["data"]
+      ? data["data"]["data"]["allowedPermissions"]
+      : [];
+    var tokenKeepLogin = data["data"]["data"]
+      ? data["data"]["data"]["token_keep_login"]
+      : [];
+    if (
+      tokenId == [] ||
+      !tokenId ||
+      tokenKeepLogin == [] ||
+      !tokenKeepLogin ||
+      status != 200
+    ) {
       return;
     }
     login(tokenId, tokenKeepLogin);
@@ -197,10 +219,20 @@ export const AuthProvider = ({ children }) => {
     });
     var status = data["status"];
     var tokenId = data["data"]["data"] ? data["data"]["data"]["token"] : [];
-    var allowedPermissions = data["data"]["data"] ? data["data"]["data"]["allowedPermissions"] : [];
-    var tokenKeepLogin = data["data"]["data"] ? data["data"]["data"]["token_keep_login"] : [];
+    var allowedPermissions = data["data"]["data"]
+      ? data["data"]["data"]["allowedPermissions"]
+      : [];
+    var tokenKeepLogin = data["data"]["data"]
+      ? data["data"]["data"]["token_keep_login"]
+      : [];
 
-    if (tokenId == [] || !tokenId || tokenKeepLogin == [] || !tokenKeepLogin || status != 200) {
+    if (
+      tokenId == [] ||
+      !tokenId ||
+      tokenKeepLogin == [] ||
+      !tokenKeepLogin ||
+      status != 200
+    ) {
       return;
     }
 

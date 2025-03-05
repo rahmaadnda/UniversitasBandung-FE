@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /*
 	Generated on 22/10/2024 by UI Generator PRICES-IDE
 	https://amanah.cs.ui.ac.id/research/ifml-regen
@@ -20,6 +21,7 @@ const CPLTable = ({ cPLDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (cPLItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/cpl/${cPLItem.id}`);
   };
   

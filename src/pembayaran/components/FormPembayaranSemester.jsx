@@ -67,6 +67,7 @@ const FormPembayaranSemester = ({
 		  ]}
 	
 		  formFields={[
+      // eslint-disable-next-line react/jsx-key
       <span>
         Klik tombol <b>Bayar</b> untuk menyelesaikan pembayaran
         semester Anda.

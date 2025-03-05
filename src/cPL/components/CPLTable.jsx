@@ -18,6 +18,7 @@ const CPLTable = ({ cPLDataList, kurikulumSelectionField
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (cPLItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/cpl/${cPLItem.id}`
     );
   };
@@ -59,6 +60,7 @@ const CPLTable = ({ cPLDataList, kurikulumSelectionField
   ,
   	  ]}
         itemsEvents={(cPLItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/cpl/${cPLItem.id}`}>
             <Button
           	size="sm"

@@ -19,6 +19,7 @@ const MahasiswaTable = ({ mahasiswaDataList
   	const { id, } = useParams();
   const navigate = useNavigate();
   const detail = async (mahasiswaItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/penilaian-kelas/${id}/nilai/${mahasiswaItem.mahasiswaId}`
     );
   };
@@ -45,6 +46,7 @@ const MahasiswaTable = ({ mahasiswaDataList
   		}
   	  ]}
         itemsEvents={(mahasiswaItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/penilaian-kelas/${id}/nilai/${mahasiswaId}/${mahasiswaItem.kelasId}`}>
             <Button
           	size="sm"

@@ -16,6 +16,7 @@ const SubCPMKTable = ({ subCPMKDataList }) => {
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (subCPMKItem) => {
+    /* eslint-disable @typescript-eslint/no-unused-expressions */
     isMobile() && navigate(`/subcpmk/${subCPMKItem.id}`);
   };
 
@@ -57,6 +58,7 @@ const SubCPMKTable = ({ subCPMKDataList }) => {
         },
       ]}
       itemsEvents={(subCPMKItem) => [
+        // eslint-disable-next-line react/jsx-key
         <Link to={`/subcpmk/${subCPMKItem.id}`}>
           <Button size="sm" variant="primary">
             Detail

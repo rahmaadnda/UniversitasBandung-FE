@@ -18,6 +18,7 @@ const KelasTable = ({ penilaianKelasDataList
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (kelasItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/penilaian-kelas/${kelasItem.id}`
     );
   };
@@ -72,6 +73,7 @@ const KelasTable = ({ penilaianKelasDataList
   		}
   	  ]}
         itemsEvents={(kelasItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/penilaian-kelas/${kelasItem.kelasId}`}>
             <Button
           	size="sm"

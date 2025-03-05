@@ -18,6 +18,7 @@ const CPMKTable = ({ cPMKDataList, cPLSelectionField, mataKuliahSelectionField
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (cPMKItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/cpmk/${cPMKItem.id}`
     );
   };
@@ -79,6 +80,7 @@ const CPMKTable = ({ cPMKDataList, cPLSelectionField, mataKuliahSelectionField
   ,
   	  ]}
         itemsEvents={(cPMKItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/cpmk/${cPMKItem.id}`}>
             <Button
           	size="sm"

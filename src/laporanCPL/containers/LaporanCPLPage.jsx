@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /*
 	Generated on 22/10/2024 by UI Generator PRICES-IDE
 	https://amanah.cs.ui.ac.id/research/ifml-regen

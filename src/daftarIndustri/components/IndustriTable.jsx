@@ -18,6 +18,7 @@ const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async (industriItem) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/daftarindustri/detail/${industriItem.id}`
     );
   };
@@ -59,6 +60,7 @@ const IndustriTable = ({ industriDataList, domainPerusahaanSelectionField
   ,
   	  ]}
         itemsEvents={(industriItem) => [
+          // eslint-disable-next-line react/jsx-key
           <Link to={`/daftarindustri/detail/${industriItem.id}`}>
             <Button
           	size="sm"

@@ -11,6 +11,8 @@ export { default as DetailComponentLayout } from "./detail/components";
 export { default as FormContainerLayout } from "./form/containers";
 export { default as FormComponentLayout } from "./form/components";
 
+export { default as IRSFormComponentLayout } from "./form/components/IRSFormComponent";
+
 export { default as ViewContainerLayout } from "./viewContainer";
 
 export { default as ViewContainerButtonLayout } from "./viewElementEvent/ViewContainerButton";

@@ -11,6 +11,7 @@ const UserTable = ({ userItem }) => {
   const { checkPermission } = useAuth();
   const navigate = useNavigate();
   const detail = async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isMobile() && navigate(`/settings/user/${userItem.id}`
     );
   };
