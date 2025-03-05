@@ -69,12 +69,12 @@ const ReportRow = ({ items, itemsAttrs }) => {
         </>
       );
     } else {
-      tableBody.current.push(row);
+      // tableBody.current.push(row);
       if (index === items.length - 1)
         return (
-          tableBody.current.length !== 0 && (
+          items.current.length !== 0 && (
             <TableBody>
-              {tableBody.current.map((item, idx) => (
+              {items.current.map((item, idx) => (
                 <TableRow key={idx}>
                   {itemsAttrs?.map((itemsAttr) =>
                     itemsAttr.featureName.includes("name") ? (
